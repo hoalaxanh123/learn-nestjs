@@ -1,6 +1,5 @@
-import { TaskStatus } from '../task.model';
-import { IsEnum, IsNotEmpty, IsOptional, IsString, IsUppercase, Matches, ValidateIf } from "class-validator";
-import { IsAlphaNumeric } from "../../custom-validator";
+import { TaskStatus } from '../task-status';
+import { IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateTaskDto {
   @IsNotEmpty()
@@ -8,21 +7,19 @@ export class CreateTaskDto {
 
   @IsNotEmpty()
   description: string;
-}
 
-export class UpdateTaskDto {
-  @IsAlphaNumeric()
-  title: string;
-  @IsNotEmpty()
-  description: string;
+  @IsOptional()
   @IsEnum(TaskStatus)
   status: TaskStatus;
 }
+
+export class UpdateTaskDto extends CreateTaskDto {}
 
 export class SearchTaskDto {
   @IsOptional()
   @IsNotEmpty()
   keyword?: string;
+
   @IsOptional()
   @IsEnum(TaskStatus)
   status?: TaskStatus;

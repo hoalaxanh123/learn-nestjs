@@ -10,29 +10,40 @@ import {
   Query,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import { CreateTaskDto, SearchTaskDto, UpdateTaskDto, UpdateTaskStatusDto } from "./dto/tasks.dto";
-import { Task, TaskStatus } from './task.model';
+import { TaskEntity } from './task.entity';
+import { CreateTaskDto, SearchTaskDto } from './dto/tasks.dto';
 
 @Controller('tasks')
 export class TasksController {
-  private tasksService: TasksService = new TasksService();
-
-  @Get()
-  getTasks(@Query() searchTaskDto: SearchTaskDto): Task[] {
-    return searchTaskDto?.keyword || searchTaskDto?.status
-      ? this.tasksService.searchTasks(searchTaskDto)
-      : this.tasksService.getTasks();
-  }
+  constructor(private tasksService: TasksService) {}
 
   @Get('/:id')
-  getTaskById(@Param('id', ParseIntPipe) id: number): Task {
+  getTaskById(@Param('id', ParseIntPipe) id: number): Promise<TaskEntity> {
     return this.tasksService.getTaskById(id);
   }
 
+  @Delete('/destroy')
+  async deleteAllTasks(): Promise<string> {
+    const affectedRows = await this.tasksService.deleteAllTasks();
+    return `${affectedRows} task(s) deleted successfully`;
+  }
+
   @Delete('/:taskId')
-  deleteTask(@Param('id', ParseIntPipe) taskId: number): Task | string {
-    this.tasksService.deleteTask(taskId);
+  async deleteTask(
+    @Param('taskId', ParseIntPipe) taskId: number,
+  ): Promise<string> {
+    await this.tasksService.deleteTask(taskId);
     return 'Task deleted successfully';
+  }
+
+  @Get()
+  async searchTasks(
+    @Query() searchTaskDto: SearchTaskDto,
+  ): Promise<TaskEntity[]> {
+    if (Object.keys(searchTaskDto).length) {
+      return this.tasksService.searchTasks(searchTaskDto);
+    }
+    return await this.tasksService.getTasks();
   }
 
   @Post()
@@ -43,17 +54,8 @@ export class TasksController {
   @Put('/:id')
   updateTask(
     @Param('id', ParseIntPipe) id: number,
-    @Body() updateTaskDto: UpdateTaskDto,
-  ): Task {
+    @Body() updateTaskDto: CreateTaskDto,
+  ): Promise<TaskEntity> {
     return this.tasksService.updateTask(id, updateTaskDto);
-  }
-
-  @Put('/:id/:status')
-  updateTaskStatus(
-    @Param('id', ParseIntPipe) id: number,
-    @Param('status') updateTaskStatusDto: UpdateTaskStatusDto,
-  ): Task {
-    const { status } = updateTaskStatusDto;
-    return this.tasksService.updateTaskStatus(id, status);
   }
 }

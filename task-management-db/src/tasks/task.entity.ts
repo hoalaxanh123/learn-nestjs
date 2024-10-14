@@ -1,17 +1,17 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { TaskStatus } from './task.model';
+import { TaskStatus } from './task-status';
 
-@Entity()
-export class Task {
-  @PrimaryGeneratedColumn('increment')
+@Entity('task')
+export class TaskEntity {
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 500 })
   title: string;
 
-  @Column()
+  @Column({ length: 1500 })
   description: string;
 
-  @Column()
+  @Column({ default: TaskStatus.OPEN })
   status: TaskStatus;
 }

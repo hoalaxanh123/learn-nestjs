@@ -8,6 +8,7 @@ import {
 import { DataSource } from 'typeorm';
 import { TaskEntity } from './task.entity';
 import { CreateTaskDto, SearchTaskDto, UpdateTaskDto } from './dto/tasks.dto';
+import { TaskStatus } from './task-status';
 
 @Injectable()
 export class TasksService {
@@ -52,6 +53,12 @@ export class TasksService {
 
   async deleteAllTasks(): Promise<number> {
     const result = await this.taskRepository.delete({});
+    this.logger.log(`Deleted ${result.affected} tasks`);
+
+    this.logger.log(`Resetting sequence...`);
+    await this.taskRepository.query(
+      `ALTER SEQUENCE task_id_seq RESTART WITH 1`,
+    );
     return result.affected;
   }
 
@@ -91,5 +98,18 @@ export class TasksService {
       );
     }
     return query.getMany();
+  }
+
+  async seedTasks(numberOfNewTask: number): Promise<TaskEntity[]> {
+    const tasks: TaskEntity[] = [];
+    for (let i = 0; i < numberOfNewTask; i++) {
+      const task = new TaskEntity();
+      task.title = `Task ${i + 1}`;
+      task.description = `Description for Task ${i + 1}`;
+      task.status = Math.random() > 0.5 ? TaskStatus.OPEN : TaskStatus.DONE;
+      await this.taskRepository.save(task);
+      tasks.push(task);
+    }
+    return tasks;
   }
 }

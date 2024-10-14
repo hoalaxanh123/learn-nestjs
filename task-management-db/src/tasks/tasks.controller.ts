@@ -58,4 +58,11 @@ export class TasksController {
   ): Promise<TaskEntity> {
     return this.tasksService.updateTask(id, updateTaskDto);
   }
+
+  @Post('/seed/:seedCount')
+  async seedTasks(
+    @Param('seedCount', ParseIntPipe) seedCount: number,
+  ): Promise<TaskEntity[]> {
+    return await this.tasksService.seedTasks(seedCount);
+  }
 }

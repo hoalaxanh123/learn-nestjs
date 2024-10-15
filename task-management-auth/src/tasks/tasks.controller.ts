@@ -23,8 +23,11 @@ export class TasksController {
   constructor(private tasksService: TasksService) {}
 
   @Get('/:id')
-  getTaskById(@Param('id', ParseIntPipe) id: number): Promise<TaskEntity> {
-    return this.tasksService.getTaskById(id);
+  getTaskById(
+    @Param('id', ParseIntPipe) id: number,
+    @GetUser() user: AuthEntity,
+  ): Promise<TaskEntity> {
+    return this.tasksService.getTaskById(id, user);
   }
 
   @Delete('/destroy')
@@ -36,19 +39,21 @@ export class TasksController {
   @Delete('/:taskId')
   async deleteTask(
     @Param('taskId', ParseIntPipe) taskId: number,
+    @GetUser() user: AuthEntity,
   ): Promise<string> {
-    await this.tasksService.deleteTask(taskId);
+    await this.tasksService.deleteTask(taskId, user);
     return 'Task deleted successfully';
   }
 
   @Get()
   async searchTasks(
     @Query() searchTaskDto: SearchTaskDto,
+    @GetUser() user: AuthEntity,
   ): Promise<TaskEntity[]> {
     if (Object.keys(searchTaskDto).length) {
-      return this.tasksService.searchTasks(searchTaskDto);
+      return this.tasksService.searchTasks(searchTaskDto, user);
     }
-    return await this.tasksService.getTasks();
+    return await this.tasksService.getAllTasksByUserId(user);
   }
 
   @Post()
@@ -63,14 +68,16 @@ export class TasksController {
   updateTask(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateTaskDto: CreateTaskDto,
+    @GetUser() user: AuthEntity,
   ): Promise<TaskEntity> {
-    return this.tasksService.updateTask(id, updateTaskDto);
+    return this.tasksService.updateTask(id, updateTaskDto, user);
   }
 
   @Post('/seed/:seedCount')
   async seedTasks(
     @Param('seedCount', ParseIntPipe) seedCount: number,
+    @GetUser() user: AuthEntity,
   ): Promise<TaskEntity[]> {
-    return await this.tasksService.seedTasks(seedCount);
+    return await this.tasksService.seedTasks(seedCount, user);
   }
 }

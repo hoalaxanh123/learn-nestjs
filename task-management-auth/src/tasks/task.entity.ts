@@ -17,7 +17,7 @@ export class TaskEntity {
   @Column({ default: TaskStatus.OPEN })
   status: TaskStatus;
 
-  @ManyToOne(() => AuthEntity, (user) => user.tasks, { eager: false })
-  @Exclude({ toPlainOnly: true })
+  @ManyToOne(() => AuthEntity, (user) => user.tasks, { eager: true })
+  // @Exclude({ toPlainOnly: true })
   user: AuthEntity;
 }

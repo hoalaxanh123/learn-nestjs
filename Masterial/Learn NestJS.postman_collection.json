@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "8585cf35-1b36-4b9c-a01e-4c933bd5cd37",
+		"name": "Learn NestJS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7421222"
+	},
+	"item": [
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Get tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TASK_HOST}}",
+							"host": [
+								"{{TASK_HOST}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TASK_HOST}}?keyword=o",
+							"host": [
+								"{{TASK_HOST}}"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "o"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TASK_HOST}}/2",
+							"host": [
+								"{{TASK_HOST}}"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "New title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "New description",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "DONE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TASK_HOST}}/5",
+							"host": [
+								"{{TASK_HOST}}"
+							],
+							"path": [
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "New title",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "New description",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "OPEN",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TASK_HOST}}/39",
+							"host": [
+								"{{TASK_HOST}}"
+							],
+							"path": [
+								"39"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all tasks",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{TASK_HOST}}/destroy",
+							"host": [
+								"{{TASK_HOST}}"
+							],
+							"path": [
+								"destroy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete single task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{TASK_HOST}}/5",
+							"host": [
+								"{{TASK_HOST}}"
+							],
+							"path": [
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Work 3-3",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Des 3-3",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "DONE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TASK_HOST}}",
+							"host": [
+								"{{TASK_HOST}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authen",
+			"item": [
+				{
+					"name": "Register User 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "2@2.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678x@X",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{AUTH_HOST}}/register",
+							"host": [
+								"{{AUTH_HOST}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "2@2.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678x@X",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{AUTH_HOST}}/register",
+							"host": [
+								"{{AUTH_HOST}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "1@1.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678x@X",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{AUTH_HOST}}/login",
+							"host": [
+								"{{AUTH_HOST}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "2@2.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678x@X",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{AUTH_HOST}}/login",
+							"host": [
+								"{{AUTH_HOST}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "1@1.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678x@X",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{AUTH_HOST}}/user-info",
+							"host": [
+								"{{AUTH_HOST}}"
+							],
+							"path": [
+								"user-info"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"console.log(111111111)",
+					"pm.test(\"Status code is 200\", function () {",
+					"    var jsonData = pm.response.json();",
+					"    accessToken = jsonData?.accessToken",
+					"    console.log(\"jsonData\", jsonData)",
+					"    if (accessToken) {",
+					"        pm.collectionVariables.set(\"TOKEN\", accessToken);",
+					"    } å",
+					"});",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "TASK_HOST",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "AUTH_HOST",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

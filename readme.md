@@ -5,3 +5,5 @@
 # 14/10/2024: https://titancorpvn.udemy.com/course/nestjs-zero-to-hero/learn/lecture/26681952#overview
 
 # 15/10/2024: https://titancorpvn.udemy.com/course/nestjs-zero-to-hero/learn/lecture/26682698#overview
+
+# 16/10/2024: https://titancorpvn.udemy.com/course/nestjs-zero-to-hero/learn/lecture/26684398#learning-tools

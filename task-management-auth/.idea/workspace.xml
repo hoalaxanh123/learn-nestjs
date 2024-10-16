@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6b8e8174-0a68-4b2a-b823-352f61b73b8d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../readme.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2nVLtWUtAidc08AjB8DmyPc7on2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ACTIVE_CLOUD_PROJECT_ACCOUNT": "herodotkich@gmail.com",
+    "ACTIVE_CLOUD_PROJECT_ID": "learn-gg-analytic",
+    "ACTIVE_CLOUD_PROJECT_NAME": "learn-gg-analytic",
+    "ACTIVE_CLOUD_PROJECT_NUMBER": "94641287140",
+    "Jest.Tasks Service.executor": "Run",
+    "Jest.TasksRepository.createTask.should throw BadRequestException for other errors.executor": "Run",
+    "Jest.TasksRepository.executor": "Run",
+    "Jest.TasksService.Delete task should not throw error if task not found.executor": "Run",
+    "Jest.TasksService.Should search tasks with keyword successfully.executor": "Run",
+    "Jest.TasksService.Should update a task throw error if task not found.executor": "Run",
+    "Jest.TasksService.executor": "Run",
+    "Jest.TasksService.should create a task.executor": "Debug",
+    "Jest.TasksService.should throw error if task not found.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.google.cloudcode.ide_session_index": "20241016_0004",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/nvvuong/work/learn/nestJs/school-management",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/home/nvvuong/work/learn/nestJs/task-management-auth/node_modules/jest",
+    "nodejs_package_manager_path": "yarn",
+    "npm.test.executor": "Run",
+    "npm.test:cov.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "/home/nvvuong/work/learn/nestJs/task-management-auth/node_modules/prettier",
+    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "ts.external.directory.path": "/home/nvvuong/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/tasks" />
+      <recent name="$PROJECT_DIR$/src/schemas" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/modules" />
+      <recent name="$PROJECT_DIR$/src/tasks/__test__" />
+      <recent name="$PROJECT_DIR$/src/schemas" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.TasksRepository.createTask.should throw BadRequestException for other errors">
+    <configuration name="Tasks Service" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/tasks/tasks.service.spec.ts" />
+      <test-names>
+        <test-name value="Tasks Service" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="TasksRepository" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/tasks/__test__/task.repository.spec.ts" />
+      <test-names>
+        <test-name value="TasksRepository" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="TasksRepository.createTask.should throw BadRequestException for other errors" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/tasks/__test__/task.repository.spec.ts" />
+      <test-names>
+        <test-name value="TasksRepository" />
+        <test-name value="createTask" />
+        <test-name value="should throw BadRequestException for other errors" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="test:cov" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test:cov" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.TasksRepository.createTask.should throw BadRequestException for other errors" />
+        <item itemvalue="Jest.TasksRepository" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="npm.test:cov" />
+        <item itemvalue="Jest.Tasks Service" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6b8e8174-0a68-4b2a-b823-352f61b73b8d" name="Changes" comment="" />
+      <created>1729053512382</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729053512382</updated>
+      <workItem from="1729053514465" duration="3174000" />
+      <workItem from="1729058968613" duration="5259000" />
+      <workItem from="1729064700500" duration="3670000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/modules/tasks/__test__/tasks.service.spec.ts</url>
+          <line>53</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

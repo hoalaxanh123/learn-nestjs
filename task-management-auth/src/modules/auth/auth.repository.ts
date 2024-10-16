@@ -1,4 +1,3 @@
-// src/auth/auth.repository.ts
 import { DataSource, Repository } from 'typeorm';
 import { AuthEntity } from './auth.entity';
 import { Injectable, Logger } from '@nestjs/common';

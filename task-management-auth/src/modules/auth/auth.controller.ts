@@ -16,9 +16,7 @@ export class AuthController {
 
   @Post('/login')
   @HttpCode(200)
-  async loginUser(
-    @Body() loginUserDto: AuthCredentialsDto,
-  ): Promise<AuthJwtToken> {
+  async loginUser(@Body() loginUserDto: AuthCredentialsDto): Promise<AuthJwtToken> {
     return this.authService.loginUser(loginUserDto);
   }
 

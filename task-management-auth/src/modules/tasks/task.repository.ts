@@ -1,12 +1,6 @@
-import {
-  BadRequestException,
-  ConflictException,
-  Injectable,
-  Logger,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { TaskEntity } from './task.entity';
-import { DataSource, Repository } from 'typeorm';
+import { DataSource, DeleteResult, Repository } from 'typeorm';
 import { CreateTaskDto, SearchTaskDto, UpdateTaskDto } from './dto/tasks.dto';
 import { AuthEntity } from '../auth/auth.entity';
 import { TaskStatus } from './task-status';
@@ -19,36 +13,15 @@ export class TasksRepository extends Repository<TaskEntity> {
     super(TaskEntity, dataSource.createEntityManager());
   }
 
-  async createTask(
-    createTaskDto: CreateTaskDto,
-    user: AuthEntity,
-  ): Promise<TaskEntity> {
-    try {
-      this.logger.log(
-        `Creating task with data: ${JSON.stringify(createTaskDto)}`,
-      );
-      const task = this.create({ ...createTaskDto, user });
-      const result = await this.save(task);
-      this.logger.log(`Task created successfully`);
-      return result;
-    } catch (error) {
-      if (error.code === '23505') {
-        this.logger.error(
-          `Task with title '${createTaskDto.title}' already exists`,
-        );
-        throw new ConflictException(
-          `Task with title '${createTaskDto.title}' already exists`,
-        );
-      }
-      this.logger.error(`Error creating task: ${error}`);
-      throw error as BadRequestException;
-    }
+  async createTask(createTaskDto: CreateTaskDto, user: AuthEntity): Promise<TaskEntity> {
+    this.logger.log(`Creating task with data: ${JSON.stringify(createTaskDto)}`);
+    const task = this.create({ ...createTaskDto, user });
+    const result = await this.save(task);
+    this.logger.log(`Task created successfully`);
+    return result;
   }
 
-  async searchTasks(
-    searchTaskDto: SearchTaskDto,
-    user: AuthEntity,
-  ): Promise<TaskEntity[]> {
+  async searchTasks(searchTaskDto: SearchTaskDto, user: AuthEntity): Promise<TaskEntity[]> {
     const { keyword, status } = searchTaskDto;
     let query = this.createQueryBuilder('task');
     query = query.where('task.userId = :userId', { userId: user.id });
@@ -56,10 +29,7 @@ export class TasksRepository extends Repository<TaskEntity> {
       query = query.andWhere('task.status = :status', { status });
     }
     if (keyword) {
-      query = query.andWhere(
-        '(task.title LIKE :keyword OR task.description LIKE :keyword)',
-        { keyword: `%${keyword}%` },
-      );
+      query = query.andWhere('(task.title LIKE :keyword OR task.description LIKE :keyword)', { keyword: `%${keyword}%` });
     }
     return query.getMany();
   }
@@ -73,10 +43,7 @@ export class TasksRepository extends Repository<TaskEntity> {
     });
   }
 
-  async seedTasks(
-    numberOfNewTask: number,
-    user: AuthEntity,
-  ): Promise<TaskEntity[]> {
+  async seedTasks(numberOfNewTask: number, user: AuthEntity): Promise<TaskEntity[]> {
     const tasks: TaskEntity[] = [];
     for (let i = 0; i < numberOfNewTask; i++) {
       const task = new TaskEntity();
@@ -91,25 +58,16 @@ export class TasksRepository extends Repository<TaskEntity> {
   }
 
   async getTaskById(id: number, user: AuthEntity): Promise<TaskEntity> {
-    const result = await this.findOne({
+    return await this.findOne({
       relations: { user: true },
       where: {
         user: { id: user.id },
         id,
       },
     });
-    if (!result) {
-      throw new NotFoundException(`Task with ID ${id} not found`);
-    }
-    return result;
   }
 
-  async updateTask(
-    id: number,
-    updateTaskDto: UpdateTaskDto,
-    user: AuthEntity,
-  ): Promise<TaskEntity> {
-    const task = await this.getTaskById(id, user);
+  async updateTask(task: TaskEntity, updateTaskDto: UpdateTaskDto): Promise<TaskEntity> {
     task.title = updateTaskDto.title;
     task.description = updateTaskDto.description;
     await this.save(task);
@@ -125,11 +83,7 @@ export class TasksRepository extends Repository<TaskEntity> {
     return result.affected;
   }
 
-  async deleteTask(id: number, user: AuthEntity): Promise<void> {
-    const task = await this.getTaskById(id, user);
-    const result = await this.delete(task);
-    if (result.affected === 0) {
-      throw new NotFoundException(`Task with ID ${id} not found`);
-    }
+  async deleteTask(task: TaskEntity): Promise<DeleteResult> {
+    return await this.delete(task);
   }
 }

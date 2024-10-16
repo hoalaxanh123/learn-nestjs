@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8585cf35-1b36-4b9c-a01e-4c933bd5cd37",
+		"_postman_id": "6abaaa7a-43c2-4798-a8e4-48717b248b59",
 		"name": "Learn NestJS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7421222"
+		"_exporter_id": "29781245"
 	},
 	"item": [
 		{
@@ -201,6 +201,40 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Seed Tasks",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Work 3-3",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Des 3-3",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "DONE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{TASK_HOST}}",
+							"host": [
+								"{{TASK_HOST}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -217,7 +251,7 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "2@2.com",
+									"value": "1@1.com",
 									"type": "text"
 								},
 								{
@@ -450,12 +484,12 @@
 	"variable": [
 		{
 			"key": "HOST",
-			"value": "",
+			"value": "localhost:3000",
 			"type": "string"
 		},
 		{
 			"key": "TASK_HOST",
-			"value": "",
+			"value": "{{HOST}}/tasks",
 			"type": "string"
 		},
 		{
@@ -465,7 +499,12 @@
 		},
 		{
 			"key": "AUTH_HOST",
-			"value": "",
+			"value": "{{HOST}}/auth",
+			"type": "string"
+		},
+		{
+			"key": "SEED_HOST",
+			"value": "{{TASK_HOST}}/seed",
 			"type": "string"
 		}
 	]

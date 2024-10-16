@@ -1,15 +1,7 @@
 // Helper function to create custom validation decorators
-import {
-  registerDecorator,
-  ValidationArguments,
-  ValidationOptions,
-} from 'class-validator';
+import { registerDecorator, ValidationArguments, ValidationOptions } from 'class-validator';
 
-export const createCustomValidator = (
-  name: string,
-  validateFn: (value: any, args: ValidationArguments) => boolean,
-  defaultMessageFn: (args: ValidationArguments) => string,
-) => {
+export const createCustomValidator = (name: string, validateFn: (value: any, args: ValidationArguments) => boolean, defaultMessageFn: (args: ValidationArguments) => string) => {
   return function (validationOptions?: ValidationOptions) {
     return function (object: object, propertyName: string) {
       registerDecorator({

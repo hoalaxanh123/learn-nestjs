@@ -1,11 +1,4 @@
-import {
-  BaseEntity,
-  BeforeInsert,
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { BaseEntity, BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { hash } from 'bcrypt';
 import { TaskEntity } from '../tasks/task.entity';
 

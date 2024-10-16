@@ -1,10 +1,5 @@
 // src/http-exception.filter.ts
-import {
-  ArgumentsHost,
-  Catch,
-  ExceptionFilter,
-  HttpException,
-} from '@nestjs/common';
+import { ArgumentsHost, Catch, ExceptionFilter, HttpException } from '@nestjs/common';
 import { Response } from 'express';
 import * as winston from 'winston';
 
@@ -16,10 +11,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     // Configure Winston to log to a file
     this.logger = winston.createLogger({
       level: 'error',
-      format: winston.format.combine(
-        winston.format.timestamp(),
-        winston.format.json(),
-      ),
+      format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
       transports: [new winston.transports.File({ filename: 'error.log' })],
     });
   }
@@ -31,10 +23,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
     // Extract the real error message
     const realErrorMessage = exception.getResponse();
-    const message =
-      typeof realErrorMessage === 'string'
-        ? realErrorMessage
-        : (realErrorMessage as any).message || 'An unexpected error occurred';
+    const message = typeof realErrorMessage === 'string' ? realErrorMessage : (realErrorMessage as any).message || 'An unexpected error occurred';
 
     // Log the error
     this.logger.error({

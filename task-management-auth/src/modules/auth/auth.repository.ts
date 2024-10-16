@@ -1,15 +1,8 @@
 // src/auth/auth.repository.ts
 import { DataSource, Repository } from 'typeorm';
 import { AuthEntity } from './auth.entity';
-import {
-  BadRequestException,
-  ConflictException,
-  Injectable,
-  Logger,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { AuthCredentialsDto } from './dto/auth.create-user';
-import { compare } from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { AuthJwtPayload } from './auth-jwt.payload';
 import { AuthJwtToken } from './auth.jwt-token.interface';
@@ -28,42 +21,20 @@ export class AuthRepository extends Repository<AuthEntity> {
 
   async addNewUser(createUserDto: AuthCredentialsDto): Promise<AuthEntity> {
     this.logger.log(`Creating a new user: ${JSON.stringify(createUserDto)}`);
-    try {
-      const user = this.create(createUserDto);
-      const result = await this.save(user);
-      console.log('result: ', result);
-      return result;
-    } catch (error) {
-      switch (error.code) {
-        case '23505':
-          throw new ConflictException('Username already exists');
-        default:
-          throw new BadRequestException(`Error creating user: ${error}`);
-      }
-    }
+    const user = this.create(createUserDto);
+    return await this.save(user);
   }
 
-  async findUserByUsername(
-    email: string,
-    hideTheTrue: boolean = false,
-  ): Promise<AuthEntity> {
+  async findUserByUsername(email: string): Promise<AuthEntity> {
     const result = await this.findOneBy({ email });
     if (!result) {
-      if (hideTheTrue) {
-        throw new BadRequestException('Invalid username or password');
-      } else {
-        throw new NotFoundException('User not found');
-      }
+      this.logger.log(`User with email ${email} not found`);
     }
     return result;
   }
 
   async loginUser(loginUserDto: AuthCredentialsDto): Promise<AuthJwtToken> {
-    const { email, password } = loginUserDto;
-    const user = await this.findUserByUsername(email, true);
-    if (!(await compare(password, user.password))) {
-      throw new BadRequestException('Invalid username or password');
-    }
+    const { email } = loginUserDto;
     const payload: AuthJwtPayload = { email };
     return { accessToken: this.jwtService.sign(payload) };
   }

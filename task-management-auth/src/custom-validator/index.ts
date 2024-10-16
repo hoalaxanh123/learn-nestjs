@@ -5,16 +5,13 @@ import { createCustomValidator } from './helper';
 export const IsAlphaNumeric = createCustomValidator(
   'isAlphaNumeric',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (value: any, args: ValidationArguments) =>
-    typeof value === 'string' && /^[a-zA-Z0-9\s]+$/.test(value),
-  (args: ValidationArguments) =>
-    `${args.property} must contain only space, letters and numbers.`,
+  (value: any, args: ValidationArguments) => typeof value === 'string' && /^[a-zA-Z0-9\s]+$/.test(value),
+  (args: ValidationArguments) => `${args.property} must contain only space, letters and numbers.`,
 );
 
 export const IsUppercase = createCustomValidator(
   'isUppercase',
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  (value: any, args: ValidationArguments) =>
-    typeof value === 'string' && value === value.toUpperCase(),
+  (value: any, args: ValidationArguments) => typeof value === 'string' && value === value.toUpperCase(),
   (args: ValidationArguments) => `${args.property} must be uppercase.`,
 );

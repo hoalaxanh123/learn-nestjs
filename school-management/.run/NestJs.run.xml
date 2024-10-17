@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="NestJs" type="NodeJSConfigurationType"
+                   node-parameters="$PROJECT_DIR$/node_modules/@nestjs/cli/bin/nest.js start --watch"
+                   path-to-js-file="src/main.ts" working-dir="$PROJECT_DIR$">
+        <method v="2"/>
+    </configuration>
+</component>

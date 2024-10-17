@@ -2,13 +2,22 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { LessonModule } from './lesson/lesson.module';
-import { LessonResolver } from './lesson/lesson.resolver';
-
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Lesson } from './lesson/lesson.entity';
 
 @Module({
-  imports: [GraphQLModule.forRoot<ApolloDriverConfig>({
-    driver: ApolloDriver, autoSchemaFile: 'schema.gql',
-  }), LessonModule], controllers: [], providers: [LessonResolver],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mongodb', // By default, mongodb will connect via account admin, we are running mongodb in docker container as root user, so we need to specify the authSource
+      url: 'mongodb://root:12345678@localhost:27017/school?authSource=admin',
+      entities: [Lesson],
+      logging: 'all',
+    }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: 'schema.gql',
+    }),
+    LessonModule,
+  ],
 })
-export class AppModule {
-}
+export class AppModule {}

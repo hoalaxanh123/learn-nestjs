@@ -2,10 +2,10 @@
 services:
   mongo:
     image: mongo:latest
-    container_name: my-mongo-container
+    container_name: mongodb
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: 12345678x@X
+      MONGO_INITDB_ROOT_PASSWORD: 12345678
     ports:
       - "27017:27017"
     volumes:

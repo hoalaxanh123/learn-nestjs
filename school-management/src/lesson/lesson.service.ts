@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { CreateLessonInput } from './lesson.create-lesson-input';
 import { StudentService } from '../student/student.service';
+import { Student } from '../student/student.entity';
 
 @Injectable()
 export class LessonService {
@@ -51,5 +52,13 @@ export class LessonService {
     const newStudentIds = [...(lesson.students || []), ...studentIds];
     lesson.students = [...new Set(newStudentIds)];
     return this.lessonRepository.save(lesson);
+  }
+
+  async getStudentsByIds(
+    studentIds: string[],
+    doubleCheck: boolean = false,
+  ): Promise<Student[]> {
+    // Get all student in the array of ids
+    return await this.studentService.getStudentsByIds(studentIds, doubleCheck);
   }
 }

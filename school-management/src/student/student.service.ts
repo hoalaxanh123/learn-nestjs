@@ -19,7 +19,10 @@ export class StudentService {
     return student;
   }
 
-  async getStudentsByIds(studentIds: string[]): Promise<Student[]> {
+  async getStudentsByIds(
+    studentIds: string[],
+    doubleCheck: boolean = false,
+  ): Promise<Student[]> {
     // Get all student in the array of ids
     const result = [];
     for (const id of studentIds) {
@@ -29,7 +32,7 @@ export class StudentService {
       }
     }
 
-    if (!result || result.length === 0) {
+    if (doubleCheck && (!result || result.length === 0)) {
       throw new NotFoundException(
         `No students with the given ids ${studentIds.join(',')} found!`,
       );

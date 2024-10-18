@@ -2,19 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Lesson {
-  id: ID!
-  name: String!
-  startDate: String!
-  endDate: String!
-  students: [String!]!
-}
-
 type Student {
   id: ID!
   publicId: String!
   firstName: String!
   lastName: String!
+}
+
+type Lesson {
+  id: ID!
+  name: String!
+  startDate: String!
+  endDate: String!
+  students: [Student!]!
 }
 
 type Query {

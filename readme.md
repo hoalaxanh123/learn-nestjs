@@ -1,6 +1,8 @@
 # https://titancorpvn.udemy.com/course/nestjs-zero-to-hero
 
-# WIP: https://titancorpvn.udemy.com/course/nestjs-zero-to-hero/learn/lecture/18692812#learning-tools
+# 18/10/2024: Finished
+
+# 17/10/2024: https://titancorpvn.udemy.com/course/nestjs-zero-to-hero/learn/lecture/18675940#overview
 
 # 16/10/2024: https://titancorpvn.udemy.com/course/nestjs-zero-to-hero/learn/lecture/26684398#learning-tools
 

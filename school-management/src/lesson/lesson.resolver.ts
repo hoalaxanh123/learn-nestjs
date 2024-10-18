@@ -20,4 +20,11 @@ export class LessonResolver {
   ) {
     return this.lessonService.createLesson(createLessonInput);
   }
+
+  @Mutation(() => LessonType) assignStudentsToLesson(
+    @Args('lessonId') lessonId: string,
+    @Args({ name: 'studentIds', type: () => [String] }) studentIds: string[],
+  ) {
+    return this.lessonService.assignStudentsToLesson(lessonId, studentIds);
+  }
 }
